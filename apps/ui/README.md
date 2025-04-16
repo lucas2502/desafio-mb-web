@@ -36,3 +36,7 @@ npm run build
 - Vite
 - Vitest
 - Storybook
+
+
+### Layout example
+![alt text](image.png)

@@ -130,7 +130,7 @@ Validar se todos os campos foram preenchidos e de acordo com o tipo de campo se 
 
 # Características da aplicação servidor
 
-Aplicação básica responsável por renderizar o formulário e receber a submissão dos dados ao final do cadastro. Não é necessário armazenar os dados. A aplicação não precisa ser complexa, use o módulo Express para o NodeJS para criar um endpoint (API) para receber os dados simulando apenas que eles serão salvos. O objetivo é ter apenas 2 endpoints simples.
+Aplicação básica responsável por renderizar o formulário e **receber a submissão dos dados ao final do cadastro**. **Não é necessário armazenar os dados**. A aplicação **não precisa ser complexa**, use o módulo Express para o NodeJS para criar um endpoint (API) para receber os dados **simulando apenas que eles serão salvos**. O objetivo é ter apenas 2 endpoints simples.
 
 ### Endpoints
 
@@ -164,3 +164,5 @@ Validar antes de receber os dados se todos os campos foram preenchidos, caso nã
 ## 📄 Importante
 
 Esse código não será usado em nenhuma hipótese para qualquer fim a não ser o de avaliação de conhecimentos técnicos.
+
+
