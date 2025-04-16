@@ -41,6 +41,7 @@ export class CreateUserController {
                 message: "Registration successful",
             });
         } catch (err) {
+            console.log({ err })
             if (err?.message === "User already exists.") {
                 return response.status(400).json({
                     message: err.message,

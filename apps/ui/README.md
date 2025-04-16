@@ -38,5 +38,3 @@ npm run build
 - Storybook
 
 
-### Layout example
-![alt text](image.png)

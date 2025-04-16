@@ -1,17 +1,30 @@
 
-
+const apiBaseURL = import.meta.env?.VITE_API_URL;
 export class UsersService {
   constructor(httpAdapter) {
     this.httpAdapter = httpAdapter
   }
 
-  async getAllUsers(input) {
-    const profileId = input.profileId
-    const url = profileId
-      ? `${process.env.VUE_APP_API_URL}/profile/api/v1/User?filterType=${input.filterType}&filterValue=${input.filterValue}&profileId=${profileId}`
-      : `${process.env.VUE_APP_API_URL}/profile/api/v1/User?filterType=${input.filterType}&filterValue=${input.filterValue}`
+  async createUser(input) {
+    const {
+      email,
+      type,
+      password,
+      person,
+      company
+    } = input
 
-    const res = await this.httpAdapter.get({ url })
+    const body = {
+      email,
+      type,
+      password,
+      person,
+      company
+    }
+
+    const url = `${apiBaseURL}/api/v1/registration`
+    console.log({ url })
+    const res = await this.httpAdapter.post({ url, body })
     return res.data
   }
 }

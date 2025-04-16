@@ -2,7 +2,7 @@ const isMock = import.meta.env?.IS_MOCK_ACTIVE;
 
 export default class Helper {
     static isTestMode() {
-        console.log({ env: import.meta.env })
+
         return isMock === 'true';
     }
 
@@ -23,15 +23,17 @@ export default class Helper {
     }
 
     static removeSpecialCharsFromString(val) {
-        return val.replace(/[^\w\s]/gi, '');
+        return val?.replace(/[^\w\s]/gi, '');
     }
 
 
 
     static parseDdMmYyyyToIsoDate(dateString) {
-        const [day, month, year] = dateString.split('/').map(Number);
-        const date = new Date(Date.UTC(year, month - 1, day));
-        return date.toISOString();
+        if (dateString) {
+            const [day, month, year] = dateString?.split('/').map(Number);
+            const date = new Date(Date.UTC(year, month - 1, day));
+            return date.toISOString();
+        }
     }
 
 

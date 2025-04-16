@@ -8,8 +8,8 @@ const routes = Router()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-routes.post('/registration', (request, response) => {
-    return createUserController.handle(request, response);
+routes.post('/registration', async (request, response) => {
+    return await createUserController.handle(request, response);
 });
 
 routes.get('/registration', (request, response) => {

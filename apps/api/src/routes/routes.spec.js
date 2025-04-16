@@ -44,35 +44,35 @@ describe('Endpoint / registration', () => {
     };
 
     it('should register a new entry with POST to person', async () => {
-        const res = await request(app).post('/api/registration').send(payloadPerson);
+        const res = await request(app).post('/api/v1/registration').send(payloadPerson);
 
         expect(res.status).toBe(200);
         expect(res.body.message).toBe('Registration successful');
     });
 
     it('should register a new entry with POST to comapny', async () => {
-        const res = await request(app).post('/api/registration').send(payloadCompany);
+        const res = await request(app).post('/api/v1/registration').send(payloadCompany);
 
         expect(res.status).toBe(200);
         expect(res.body.message).toBe('Registration successful');
     });
 
     it('should return 400 if required fields are missing', async () => {
-        const res = await request(app).post('/api/registration').send({ name: 'Lucas' });
+        const res = await request(app).post('/api/v1/registration').send({ name: 'Lucas' });
 
         expect(res.status).toBe(400);
         expect(res.body.message).toBe('Fields are required');
     });
 
     it('should return 400 if user already exists', async () => {
-        const res = await request(app).post('/api/registration').send(payloadCompany);
+        const res = await request(app).post('/api/v1/registration').send(payloadCompany);
 
         expect(res.status).toBe(400);
         expect(res.body.message).toBe('User already exists.');
     });
 
     it('should return html page by GET', async () => {
-        const res = await request(app).get('/api/registration');
+        const res = await request(app).get('/api/v1/registration');
 
         expect(res.status).toBe(200);
         expect(res.text).toBeDefined()

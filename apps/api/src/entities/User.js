@@ -6,7 +6,7 @@ export class User {
 
         this.email = email;
         this.type = type;
-        this.password = password;
+        this.password = Buffer.from(password, 'binary').toString('base64');
         this.person = person;
         this.company = company;
         this.id = id || uuid();
