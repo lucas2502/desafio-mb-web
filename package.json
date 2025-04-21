@@ -1,0 +1,33 @@
+{
+  "name": "mb-challenge",
+  "version": "1.0.0",
+  "description": "Somos a maior plataforma de negociação de criptomoedas e ativos alternativos da América Latina, criada para elevar a experiência de quem vivencia essa revolução, entregando o melhor serviço de negociação de ativos alternativos, com liberdade, segurança e liquidez. Sendo assim, nós existimos para mudar a maneira como as pessoas lidam com o dinheiro através da tecnologia.",
+  "main": "index.js",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:storybook": "npm run storybook --workspace=apps/ui",
+    "dev:ui": "npm run dev --workspace=apps/ui",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:all": "concurrently \"npm run dev --workspace=apps/ui\" \"npm run dev --workspace=apps/api\"",
+    "test:ui": "npm run test --workspace=apps/ui",
+    "test:api": "npm run test --workspace=apps/api",
+    "test:all": "concurrently \"npm run test --workspace=apps/ui\" \"npm run test --workspace=apps/api\"",
+    "clean": "sh .scripts/clean.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lucas2502/desafio-mb-web.git"
+  },
+  "author": "Lucas Gonçalves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucas2502/desafio-mb-web/issues"
+  },
+  "homepage": "https://github.com/lucas2502/desafio-mb-web#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "sass-embedded": "^1.86.3"
+  }
+}
