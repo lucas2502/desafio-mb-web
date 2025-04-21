@@ -33,6 +33,7 @@ desafio-mb-web
 - Vitest
 - Atomic Design: Atom, Molecule, Organism
 - Padrões de clean architecture para use-cases e services
+- Storybook
 
 ### DevOps
 - NPM Workspaces
@@ -41,6 +42,7 @@ desafio-mb-web
 
 - Frontend: http://localhost:8080  
 - Backend: http://localhost:3000
+- Storybook http://localhost:6006
 
 ---
 
@@ -90,6 +92,19 @@ Ou separadamente:
 npm run test:ui     # Testes do frontend
 npm run test:api    # Testes do backend
 ```
+
+---
+
+---
+
+## Rodando o Storybook
+
+Para rodar o storybook:
+
+```bash
+npm run dev:storybook 
+```
+
 
 ---
 
