@@ -39,8 +39,11 @@ const slots = useSlots();
 .card {
   display: flex;
   flex-direction: column;
-  width: 100vw !important;
-  padding: 5vmin 10vmin;
+  width: 90vmin;
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 5vmin 5vmin;
+  box-sizing: border-box;
 
   &__header {
     padding: 3vmin 0;
@@ -71,12 +74,6 @@ const slots = useSlots();
 @media only screen and (max-width: 1024px) {
   .card {
     width: 90vw;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .card {
-    padding: 10vmin 50vmin;
   }
 }
 </style>

@@ -73,6 +73,7 @@ watch(
 
   &__message {
     flex: 1;
+    color: #fff;
   }
 
   &__close {

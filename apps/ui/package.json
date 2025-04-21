@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3000",
+    "dev": "vite --port 8080",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
     "jsdom": "^26.1.0",
+    "sass-embedded": "^1.86.3",
     "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2"
   }

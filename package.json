@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/lucas2502/desafio-mb-web#readme",
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "sass-embedded": "^1.86.3"
   }
 }
