@@ -1,7 +1,7 @@
 export class UsersServiceMock {
   async createUser(_input) {
     return await new Promise((resolve, reject) => {
-      console.log({ input: _input })
+
       try {
         setTimeout(() => {
           return resolve('ok')

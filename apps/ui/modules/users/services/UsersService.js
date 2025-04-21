@@ -23,7 +23,7 @@ export class UsersService {
     }
 
     const url = `${apiBaseURL}/api/v1/registration`
-    console.log({ url })
+
     const res = await this.httpAdapter.post({ url, body })
     return res.data
   }

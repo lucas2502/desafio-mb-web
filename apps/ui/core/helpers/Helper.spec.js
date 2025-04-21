@@ -1,4 +1,3 @@
-// src/helpers/__tests__/Helper.test.js
 import Helper from './Helper';
 
 describe('Helper', () => {
@@ -65,9 +64,9 @@ describe('Helper', () => {
     });
 
 
-    describe('parseDdMmYyyyToIsoDate', () => {
+    describe('parseYyyyMmDdToISODate', () => {
         it('should return correct ISO date string', () => {
-            const isoDate = Helper.parseDdMmYyyyToIsoDate('01/01/2020');
+            const isoDate = Helper.parseYyyyMmDdToISODate('2020/01/01');
             expect(isoDate).toBe('2020-01-01T00:00:00.000Z');
         });
 

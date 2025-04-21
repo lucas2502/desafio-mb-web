@@ -12,43 +12,49 @@ export class CreateUserUseCase {
   }
 
   async execute(data) {
-    const { email, type, password, person, company } = data
 
-    const {
-      name: personName,
-      cpf,
-      dateOfbirth,
-      phone: personPhone } = person
-
-    const {
-      name: companyName,
-      cnpj,
-      openingDate,
-      phone: companyPhone } = company
-
-    const input = {
-      email,
-      type,
-      password,
-      person: {
-        name: personName,
-        cpf: Helper.removeSpecialCharsFromString(cpf),
-        dateOfbirth: Helper.parseDdMmYyyyToIsoDate(dateOfbirth),
-        phone: Helper.removeSpecialCharsFromString(personPhone)
-      },
-      company: {
-        name: companyName,
-        cnpj: Helper.removeSpecialCharsFromString(cnpj),
-        openingDate: Helper.parseDdMmYyyyToIsoDate(openingDate),
-        phone: Helper.removeSpecialCharsFromString(companyPhone)
-      },
-    };
 
     try {
+
+      const { email, type, password, person, company } = data
+
+      const {
+        name: personName,
+        cpf,
+        dateOfbirth,
+        phone: personPhone } = person
+
+      const {
+        name: companyName,
+        cnpj,
+        openingDate,
+        phone: companyPhone } = company
+
+      const input = {
+        email,
+        type,
+        password,
+        person: {
+          name: personName,
+          cpf: Helper.removeBlankSpaceAndSpecialCharsFromString(cpf),
+          dateOfbirth: Helper.parseYyyyMmDdToISODate(dateOfbirth),
+          phone: Helper.removeBlankSpaceAndSpecialCharsFromString(personPhone)
+        },
+        company: {
+          name: companyName,
+          cnpj: Helper.removeBlankSpaceAndSpecialCharsFromString(cnpj),
+          openingDate: Helper.parseYyyyMmDdToISODate(openingDate),
+          phone: Helper.removeBlankSpaceAndSpecialCharsFromString(companyPhone)
+        },
+      };
+
       const response = await this.usersService.createUser(input);
       return right(Result.ok(response));
     } catch (error) {
 
+      if (HttpHelper.isUnauthorizedError(error)) {
+        return left(new AppError.Unauthorized(error));
+      }
 
       if (HttpHelper.isBadRequestError(error)) {
         return left(new AppError.BadRequest(error));

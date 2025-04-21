@@ -26,37 +26,44 @@ export default class Helper {
         return val?.replace(/[^\w\s]/gi, '');
     }
 
+    static removeBlankSpaceAndSpecialCharsFromString(val) {
+        return val?.replace(/[^a-zA-Z0-9]/g, '');
+    }
+
+    static allowNameFromString(val) {
+        return val.replace(/[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s]/g, '');
+    }
 
 
-    static parseDdMmYyyyToIsoDate(dateString) {
-        if (dateString) {
-            const [day, month, year] = dateString?.split('/').map(Number);
+    static parseYyyyMmDdToISODate(val) {
+        if (val) {
+            const [year, day, month] = val?.split('-').map(Number);
             const date = new Date(Date.UTC(year, month - 1, day));
             return date.toISOString();
         }
     }
 
 
-    static isValidEmail(v) {
+    static isValidEmail(val) {
         return (
-            Helper.isDefined(v) && Helper.isNotEmpty(v) &&
+            Helper.isDefined(val) && Helper.isNotEmpty(val) &&
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-                v
+                val
             )
         );
     }
 
-    static isValidPhone(v) {
+    static isValidPhone(val) {
         return (
-            Helper.isDefined(v) && Helper.isNotEmpty(v) &&
+            Helper.isDefined(val) && Helper.isNotEmpty(val) &&
             /^\(?[1-9]{2}\)?\s?9[0-9]{4}-?[0-9]{4}$/
-                .test(v)
+                .test(val)
         );
     }
 
-    static isValidCpf(value) {
-        if (!value) return false;
-        const cpf = value.toString().replace(/\D/g, '');
+    static isValidCpf(val) {
+        if (!val) return false;
+        const cpf = val.toString().replace(/\D/g, '');
         if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
 
         let sum = 0;
@@ -75,13 +82,11 @@ export default class Helper {
     }
 
     static isValidCnpj(cnpj) {
+        if (Helper.isDefined(cnpj) && Helper.isNotEmpty(cnpj)) return false
+
         cnpj = cnpj.replace(/[^\d]+/g, '');
 
-        if (cnpj === '') return false;
-
         if (cnpj.length !== 14) return false;
-
-        // Eliminates known invalid CNPJs
 
         if (
             cnpj === '00000000000000' ||
@@ -103,7 +108,7 @@ export default class Helper {
         let sum = 0;
         let position = cnpjLength - 7;
 
-        // Checking first verifying digit
+
         for (let i = cnpjLength; i >= 1; i--) {
             sum += Number(cnpjNumbers.charAt(cnpjLength - i)) * position--;
             if (position < 2) position = 9;
@@ -112,7 +117,6 @@ export default class Helper {
         let result = sum % 11 < 2 ? 0 : 11 - (sum % 11);
         if (result.toString() !== cnpjDigits.charAt(0)) return false;
 
-        // Checking second verifying digit
         cnpjLength = cnpjLength + 1;
         cnpjNumbers = cnpj.substring(0, cnpjLength);
         sum = 0;
@@ -128,6 +132,8 @@ export default class Helper {
 
         return true;
     }
+
+
 }
 
 

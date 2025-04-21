@@ -62,6 +62,16 @@ describe('Endpoint / registration', () => {
 
         expect(res.status).toBe(400);
         expect(res.body.message).toBe('Fields are required');
+        expect(res.body.details).toEqual([
+            { "field": "email", "message": "Email is required" },
+            { "field": "type", "message": "Invalid user type" },
+            { "field": "password", "message": "Password is required" },
+            { "field": "name", "message": "Name is required" },
+            { "field": "cnpj", "message": "CNPJ is required" },
+            { "field": "openingDate", "message": "Opening date is required" },
+            { "field": "phone", "message": "Phone is required" }
+        ])
+
     });
 
     it('should return 400 if user already exists', async () => {

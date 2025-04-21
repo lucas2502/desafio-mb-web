@@ -1,9 +1,8 @@
-// src/app.js
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { routes } from './routes/index.js'; // ou o nome correto do seu arquivo de rotas
+import { routes } from './routes/index.js';
 
 const app = express();
 

@@ -1,5 +1,3 @@
-import { User } from '../../entities/User.js';
-
 export class UsersRepositoryInMemory {
   constructor() {
     this.users = [];
@@ -14,3 +12,4 @@ export class UsersRepositoryInMemory {
     this.users.push(user);
   }
 }
+
