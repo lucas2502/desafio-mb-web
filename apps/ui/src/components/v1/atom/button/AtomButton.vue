@@ -54,7 +54,7 @@ function doClick() {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .base-button {
   padding: 8px 24px;
   font-weight: 500;

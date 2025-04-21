@@ -31,7 +31,7 @@ const props = defineProps({
   },
 });
 
-const visible = ref(false);
+const visible = ref(props.show);
 
 watch(
   () => props.show,
@@ -49,8 +49,9 @@ watch(
 <style scoped lang="scss">
 .base-toast {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   min-width: 280px;
   padding: 16px 20px;
   border-radius: 8px;
@@ -74,15 +75,6 @@ watch(
   &__message {
     flex: 1;
     color: #fff;
-  }
-
-  &__close {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 18px;
-    margin-left: 16px;
-    cursor: pointer;
   }
 }
 </style>
