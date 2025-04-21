@@ -131,27 +131,6 @@ const userType = computed(() => {
   return getUserType();
 });
 
-// const propsByUserType = computed(() => {
-//   const userType = getUserType();
-//   return userType === "person"
-//     ? {
-//         title: "Pessoa Física",
-//         fields: {
-//           name: "Nome",
-//           documment: "CPF",
-//           date: "Data de nascimento",
-//         },
-//       }
-//     : {
-//         title: "Pessoa Jurídica",
-//         fields: {
-//           name: "Razão social",
-//           documment: "CNPJ",
-//           date: "Data da abertura",
-//         },
-//       };
-// });
-
 const pageTitle = computed(() => {
   return userType.value === "person" ? "Pessoa Física" : "Pessoa Jurídica";
 });
@@ -199,11 +178,11 @@ async function submit() {
   }
 }
 
-function goBack(event) {
+function goBack() {
   setStep(1);
 }
 
-function goNext(event) {
+function goNext() {
   submit();
 }
 </script>

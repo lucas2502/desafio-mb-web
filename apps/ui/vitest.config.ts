@@ -12,14 +12,6 @@ export default defineConfig({
     include: ["./**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     globals: true,
     environment: "jsdom",
-    // coverage: {
-    //   all: false,
-    //   enabled: true,
-    //   provider: 'v8',
-    //   reporter: ['text', 'json', 'html', 'cobertura', 'lcov'],
-    //   reportsDirectory: './tests/unit/coverage'
-    //   // include: ['./logic/**']
-    // }
   },
   resolve: {
     alias: {
