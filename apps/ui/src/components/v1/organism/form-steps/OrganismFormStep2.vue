@@ -102,7 +102,7 @@
 
       <template #actions>
         <AtomButton id="button-back" outline @click="goBack">Voltar</AtomButton>
-        <AtomButton id="button-next" @click="goNext">Cadastrar</AtomButton>
+        <AtomButton id="button-next" @click="goNext">Continuar</AtomButton>
       </template>
     </MoleculeFormStep>
   </div>

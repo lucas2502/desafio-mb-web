@@ -88,6 +88,23 @@ export default function useRegister() {
     step.value = value;
   };
 
+  const clearStep2Data = () => {
+    Object.assign(user.value.person, {
+      name: undefined,
+      cpf: undefined,
+      dateOfbirth: undefined,
+      phone: undefined
+    });
+
+    Object.assign(user.value.company, {
+      name: undefined,
+      cnpj: undefined,
+      openingDate: undefined,
+      phone: undefined
+    });
+  }
+
+
   const resetForm = () => {
     Object.assign(user, {
       email: undefined,
@@ -115,5 +132,6 @@ export default function useRegister() {
     getDataByStep,
     resetForm,
     getUserType,
+    clearStep2Data
   };
 }

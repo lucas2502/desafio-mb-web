@@ -1,22 +1,14 @@
-export const commonFieldsSchema = {
+export const fieldsSchema = {
   email: [(val) => !!val, "Email is required"],
   type: [(val) => ["person", "company"].includes(val), "Invalid user type"],
   password: [(val) => !!val, "Password is required"],
-};
-
-export const personSchema = {
   name: [(val) => !!val, "Name is required"],
-  cpf: [(val) => !!val, "CPF is required"],
-  dateOfbirth: [(val) => !!val, "Date of birth is required"],
+  document: [(val) => !!val, "Document is required"],
+  date: [(val) => !!val, "Date is required"],
   phone: [(val) => !!val, "Phone is required"],
 };
 
-export const companySchema = {
-  name: [(val) => !!val, "Name is required"],
-  cnpj: [(val) => !!val, "CNPJ is required"],
-  openingDate: [(val) => !!val, "Opening date is required"],
-  phone: [(val) => !!val, "Phone is required"],
-};
+
 
 
 function validateBySchema(data, schema) {
@@ -36,16 +28,27 @@ function validateBySchema(data, schema) {
 
 
 export function validateSchema(data) {
-  const { email, type, password, person, company } = data;
+  const { email,
+    type,
+    password,
+    name,
+    document,
+    date,
+    phone } = data;
 
-  const commonValidation = validateBySchema({ email, type, password }, commonFieldsSchema);
+  const fieldsValidation = validateBySchema({
+    email,
+    type,
+    password,
+    name,
+    document,
+    date,
+    phone
+  }, fieldsSchema);
 
-  const specificSchema = type === "person" ? personSchema : companySchema;
-  const specificData = type === "person" ? person : company;
-  const specificValidation = validateBySchema(specificData, specificSchema);
 
   return {
-    hasError: commonValidation.hasError || specificValidation.hasError,
-    details: [...commonValidation.details, ...specificValidation.details],
+    hasError: fieldsValidation.hasError,
+    details: [...fieldsValidation.details],
   };
 }

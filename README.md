@@ -10,7 +10,7 @@ Este repositório contém uma aplicação fullstack desenvolvida como parte do d
 desafio-mb-web
 ├── apps/
 │   ├── api/        # Backend com Node.js + Express
-│   └── ui/         # Frontend com Vue 3 + Vite
+│   └── ui/         # Frontend com Vue 3 + Vite + Storybook
 ├── docker-compose.yml
 ├── .scripts/
 ├── README.md
@@ -44,6 +44,19 @@ desafio-mb-web
 - Backend: http://localhost:3000
 - Storybook http://localhost:6006
 
+---
+
+## Como Rodar o Projeto com Docker
+
+### Pré-requisitos
+- Docker
+- Docker Compose
+
+### Comando para subir os containers:
+
+```bash
+docker-compose up --build
+```
 ---
 
 ## Como Rodar o Projeto Localmente

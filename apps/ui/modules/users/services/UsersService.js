@@ -6,25 +6,9 @@ export class UsersService {
   }
 
   async createUser(input) {
-    const {
-      email,
-      type,
-      password,
-      person,
-      company
-    } = input
-
-    const body = {
-      email,
-      type,
-      password,
-      person,
-      company
-    }
-
     const url = `${apiBaseURL}/api/v1/registration`
 
-    const res = await this.httpAdapter.post({ url, body })
+    const res = await this.httpAdapter.post({ url, body: { ...input } })
     return res.data
   }
 }

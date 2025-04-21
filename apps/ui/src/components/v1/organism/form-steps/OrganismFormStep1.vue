@@ -23,6 +23,7 @@
           { label: 'Pessoa jurídica', value: 'company' },
         ]"
         :rules="[(v) => !!v || 'Selecione uma opção']"
+        @update:model-value="clearStep2Data"
       />
 
       <template #actions>
@@ -42,7 +43,7 @@ import FormHelper from "../../../../../core/helpers/FormHelper.js";
 import Helper from "../../../../../core/helpers/Helper.js";
 import useRegister from "@/composables/useRegister";
 
-const { setDataByStep, getDataByStep, setStep } = useRegister();
+const { setDataByStep, getDataByStep, setStep, clearStep2Data } = useRegister();
 
 const local = ref(getDataByStep(1));
 

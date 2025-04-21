@@ -4,5 +4,5 @@ export const ErrorCodeEnum = {
   Timeout: "TIMEOUT",
   AccessDenied: "ACCESS_DENIED",
   RequiredFields: 'REQUIRED_FIELDS',
-  NotFound: 'NOT_FOUND'
+  NotFound: 'NOT_FOUND',
 };

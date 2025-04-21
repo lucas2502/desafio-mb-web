@@ -28,7 +28,7 @@ routes.post('/registration', async (request, response) => {
 });
 
 routes.get('/registration', (request, response) => {
-    return response.sendFile(path.join(__dirname, "../../../ui/dist/index.html"));
+    return response.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
 export { routes }

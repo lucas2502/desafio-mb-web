@@ -1,4 +1,6 @@
 import AtomInputText from './AtomInputText.vue';
+import '../../../../assets/main.css';
+
 
 export default {
   title: 'Components/AtomInputText',
@@ -69,28 +71,6 @@ WithError.args = {
   type: 'email',
   maxLength: '100',
   placeholder: 'Digite seu e-mail',
-  rules: [
-    (value) => value.includes('@') || 'O e-mail deve conter "@"',
-  ],
+
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  id: 'input-6',
-  label: 'Texto Desabilitado',
-  modelValue: '',
-  type: 'text',
-  maxLength: '50',
-  placeholder: 'Este campo está desabilitado',
-  disabled: true,
-};
-
-export const WithCustomLabel = Template.bind({});
-WithCustomLabel.args = {
-  id: 'input-7',
-  label: 'Custom Label',
-  modelValue: '',
-  type: 'text',
-  maxLength: '50',
-  placeholder: 'Digite algo com label customizado...',
-};

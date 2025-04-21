@@ -63,7 +63,7 @@
           ref="nameRef"
           id="input-comapny-name"
           label="Razão social"
-          v-model="local.comapany.name"
+          v-model="local.company.name"
           type="text"
           placeholder="Informe a razão sozial"
         ></AtomInputText>
@@ -139,6 +139,7 @@ import Helper from "../../../../../core/helpers/Helper.js";
 import FormHelper from "../../../../../core/helpers/FormHelper.js";
 import createUserUseCase from "../../../../../modules/users/use-cases/CreateUser";
 import AtomAlert from "../../atom/alert/AtomAlert.vue";
+import { ErrorCodeEnum } from "../../../../../core/enums/ErrorCodeEnum";
 
 const { getDataByStep, setStep, getStep } = useRegister();
 
@@ -220,7 +221,7 @@ async function submit() {
       company: {
         name: local.value.company.name,
         cnpj: local.value.company.cnpj,
-        openingDatae: local.value.company.openingDate,
+        openingDate: local.value.company.openingDate,
         phone: local.value.company.phone,
       },
       password: local.value.password,

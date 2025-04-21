@@ -37,8 +37,8 @@ export default class Helper {
 
     static parseYyyyMmDdToISODate(val) {
         if (val) {
-            const [year, day, month] = val?.split('-').map(Number);
-            const date = new Date(Date.UTC(year, month - 1, day));
+            const [year, month, day] = val.split('-').map(Number);
+            const date = new Date(year, month - 1, day);
             return date.toISOString();
         }
     }
@@ -82,9 +82,7 @@ export default class Helper {
     }
 
     static isValidCnpj(cnpj) {
-        if (Helper.isDefined(cnpj) && Helper.isNotEmpty(cnpj)) return false
-
-        cnpj = cnpj.replace(/[^\d]+/g, '');
+        cnpj = cnpj?.replace(/[^\d]+/g, '');
 
         if (cnpj.length !== 14) return false;
 

@@ -8,14 +8,22 @@ export class CreateUserController {
     }
 
     async handle(request, response) {
-        const { email, type, password, person, company } = request.body;
+        const { email,
+            type,
+            password,
+            name,
+            document,
+            date,
+            phone } = request.body;
 
         const validationResult = validateSchema({
             email,
             type,
             password,
-            person,
-            company
+            name,
+            document,
+            date,
+            phone
         });
 
         if (validationResult.hasError) {
@@ -30,8 +38,10 @@ export class CreateUserController {
                 email,
                 type,
                 password,
-                person,
-                company,
+                name,
+                document,
+                date,
+                phone
             });
 
             return response.status(200).json({
@@ -50,63 +60,5 @@ export class CreateUserController {
         }
     }
 
-    // validateCommonFields({ email, type, password }) {
-    //     const errors = [];
-    //     if (Helper.isNotDefined(email) || Helper.isEmpty(email)) {
-    //         errors.push("email");
-    //     }
-    //     if (Helper.isNotDefined(type) || Helper.isEmpty(type)) {
-    //         errors.push("type");
-    //     }
-    //     if (Helper.isNotDefined(password) || Helper.isEmpty(password)) {
-    //         errors.push("password");
-    //     }
 
-    //     return {
-    //         hasError: !!errors.length,
-    //         details: errors,
-    //     };
-    // }
-
-    // validatePersonFields({ name, cpf, dateOfbirth, phone }) {
-    //     const errors = [];
-    //     if (Helper.isNotDefined(name) || Helper.isEmpty(name)) {
-    //         errors.push("name");
-    //     }
-    //     if (Helper.isNotDefined(cpf) || Helper.isEmpty(cpf)) {
-    //         errors.push("cpf");
-    //     }
-    //     if (Helper.isNotDefined(dateOfbirth) || Helper.isEmpty(dateOfbirth)) {
-    //         errors.push("dateOfbirth");
-    //     }
-    //     if (Helper.isNotDefined(phone) || Helper.isEmpty(phone)) {
-    //         errors.push("phone");
-    //     }
-
-    //     return {
-    //         hasError: !!errors.length,
-    //         details: errors,
-    //     };
-    // }
-
-    // validateCompanyFields({ name, cnpj, openingDate, phone }) {
-    //     const errors = [];
-    //     if (Helper.isNotDefined(name) || Helper.isEmpty(name)) {
-    //         errors.push("name");
-    //     }
-    //     if (Helper.isNotDefined(cnpj) || Helper.isEmpty(cnpj)) {
-    //         errors.push("cnpj");
-    //     }
-    //     if (Helper.isNotDefined(openingDate) || Helper.isEmpty(openingDate)) {
-    //         errors.push("openingDate");
-    //     }
-    //     if (Helper.isNotDefined(phone) || Helper.isEmpty(phone)) {
-    //         errors.push("phone");
-    //     }
-
-    //     return {
-    //         hasError: !!errors.length,
-    //         details: errors,
-    //     };
-    // }
 }

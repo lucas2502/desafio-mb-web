@@ -4,6 +4,7 @@ import AppError from '../../../../core/base/AppError';
 import { HttpHelper } from '../../../../core/helpers/HttpHelper';
 import Helper from '../../../../core/helpers/Helper';
 import Result from '../../../../core/base/Result';
+import { ErrorCodeEnum } from '../../../../core/enums/ErrorCodeEnum';
 
 
 export class CreateUserUseCase {
@@ -30,28 +31,22 @@ export class CreateUserUseCase {
         openingDate,
         phone: companyPhone } = company
 
+
       const input = {
         email,
         type,
         password,
-        person: {
-          name: personName,
-          cpf: Helper.removeBlankSpaceAndSpecialCharsFromString(cpf),
-          dateOfbirth: Helper.parseYyyyMmDdToISODate(dateOfbirth),
-          phone: Helper.removeBlankSpaceAndSpecialCharsFromString(personPhone)
-        },
-        company: {
-          name: companyName,
-          cnpj: Helper.removeBlankSpaceAndSpecialCharsFromString(cnpj),
-          openingDate: Helper.parseYyyyMmDdToISODate(openingDate),
-          phone: Helper.removeBlankSpaceAndSpecialCharsFromString(companyPhone)
-        },
+        email,
+        name: personName ?? companyName,
+        document: Helper.removeBlankSpaceAndSpecialCharsFromString(cpf ?? cnpj),
+        date: Helper.parseYyyyMmDdToISODate(dateOfbirth ?? openingDate),
+        phone: Helper.removeBlankSpaceAndSpecialCharsFromString(personPhone ?? companyPhone)
       };
+
 
       const response = await this.usersService.createUser(input);
       return right(Result.ok(response));
     } catch (error) {
-
       if (HttpHelper.isUnauthorizedError(error)) {
         return left(new AppError.Unauthorized(error));
       }

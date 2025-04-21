@@ -20,7 +20,7 @@ describe('UseCase: Users/CreateUser', () => {
     person: {
       name: 'Lucas',
       cpf: '761.996.070-82',
-      dateOfbirth: '25/02/1995',
+      dateOfbirth: '1995-02-25',
       phone: '(61) 986245829',
     },
     company: {
@@ -44,7 +44,7 @@ describe('UseCase: Users/CreateUser', () => {
     company: {
       name: 'Lucas LTDA',
       cnpj: '828.331.330/0001-03',
-      openingDate: '25/02/1995',
+      openingDate: '1995-02-25',
       phone: '(61) 986245829',
     },
     password: 'mb@123'
@@ -116,4 +116,5 @@ describe('UseCase: Users/CreateUser', () => {
 
     expect(errorValue.code).toBe(ErrorCodeEnum.NotFound);
   });
+
 });

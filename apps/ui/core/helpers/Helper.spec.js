@@ -66,8 +66,8 @@ describe('Helper', () => {
 
     describe('parseYyyyMmDdToISODate', () => {
         it('should return correct ISO date string', () => {
-            const isoDate = Helper.parseYyyyMmDdToISODate('2020/01/01');
-            expect(isoDate).toBe('2020-01-01T00:00:00.000Z');
+            const isoDate = Helper.parseYyyyMmDdToISODate('2020-01-01');
+            expect(isoDate).toBe('2020-01-01T03:00:00.000Z');
         });
 
 
@@ -114,6 +114,24 @@ describe('Helper', () => {
 
         it('should return false for CPF with invalid length', () => {
             expect(Helper.isValidCpf('123456789')).toBe(false);
+        });
+    });
+
+    describe('isValidCnpj', () => {
+        it('should return true for a valid CNPJ', () => {
+            expect(Helper.isValidCnpj('37.376.382/0001-62')).toBe(true);
+        });
+
+        it('should return false for an invalid CNPJ', () => {
+            expect(Helper.isValidCnpj('00.000.000/0000-00')).toBe(false);
+        });
+
+        it('should return false for an empty CNPJ', () => {
+            expect(Helper.isValidCnpj('')).toBe(false);
+        });
+
+        it('should return false for CNPJ with invalid length', () => {
+            expect(Helper.isValidCnpj('123456789')).toBe(false);
         });
     });
 });
